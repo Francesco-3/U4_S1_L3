@@ -21,10 +21,14 @@ package Ex_2;
 public class SIM {
     private String numberPhone;
     private double credit;
+    private String numeroChiamato;
+    private int durataMinuti;
 
-    public SIM(String numberPhone) {
+    public SIM(String numberPhone, String numeroChiamato, int durataMinuti) {
         this.numberPhone = numberPhone;
         this.credit = 0.0;
+        this.numeroChiamato = numeroChiamato;
+        this.durataMinuti = durataMinuti;
     }
 
     public void stampaSIM() {
