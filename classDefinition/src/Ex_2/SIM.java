@@ -18,28 +18,57 @@
 
 package Ex_2;
 
-public class SIM {
-    private String numberPhone;
-    private double credit;
+import java.util.ArrayList;
+import java.util.List;
+
+class Chiamata {
     private String numeroChiamato;
     private int durataMinuti;
 
-    public SIM(String numberPhone, String numeroChiamato, int durataMinuti) {
-        this.numberPhone = numberPhone;
-        this.credit = 0.0;
+    public Chiamata(String numeroChiamato, int durataMinuti) {
         this.numeroChiamato = numeroChiamato;
         this.durataMinuti = durataMinuti;
+    }
+
+    @Override
+    public String toString() {
+        return "Numero chiamato: " + numeroChiamato +
+                ", Durata: " + durataMinuti + " min";
+    }
+}
+
+public class SIM {
+    private String numberPhone;
+    private double credit;
+    private List<Chiamata> listaChiamate;
+
+    public SIM(String numberPhone) {
+        this.numberPhone = numberPhone;
+        this.credit = 0.0;
+        this.listaChiamate = new ArrayList<>();
+    }
+
+    public void aggiungiChiamata(String numeroChiamato, int durataMinuti) {
+        listaChiamate.add(new Chiamata(numeroChiamato, durataMinuti));
     }
 
     public void stampaSIM() {
         System.out.println("Il numero di cellulare è: " + numberPhone);
         System.out.println("Il credito è di: " + credit + "€");
-        System.out.println("Ultime chiamate:");
+        System.out.println("\nUltime chiamate:");
+        for (Chiamata c : listaChiamate) {
+            System.out.println(" - " + c);
+        }
     }
 
     public static void main(String[] args) {
         SIM sim = new SIM("3456789012");
 
+        sim.aggiungiChiamata("3331112222", 3);
+        sim.aggiungiChiamata("3205558888", 5);
+        sim.aggiungiChiamata("3921234567", 2);
+        sim.aggiungiChiamata("3151654864", 7);
+        sim.aggiungiChiamata("3598416189", 8);
         sim.stampaSIM();
     }
 }
